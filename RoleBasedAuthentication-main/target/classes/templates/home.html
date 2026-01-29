@@ -1,0 +1,486 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Home | SHEMS</title>-->
+
+<!--<style>-->
+<!--:root {-->
+<!--  --primary: #2563eb;-->
+<!--  --primary-dark: #1e40af;-->
+<!--  --bg: #f8fafc;-->
+<!--  --card: #ffffff;-->
+<!--  --text: #0f172a;-->
+<!--  --muted: #64748b;-->
+<!--  --border: #e5e7eb;-->
+<!--}-->
+
+<!--body.dark {-->
+<!--  --bg: #0b1220;-->
+<!--  --card: #111827;-->
+<!--  --text: #f8fafc;-->
+<!--  --muted: #9ca3af;-->
+<!--  --border: #1f2937;-->
+<!--}-->
+
+<!--body {-->
+<!--  margin: 0;-->
+<!--  font-family: Inter, Segoe UI, system-ui, sans-serif;-->
+<!--  background: var(--bg);-->
+<!--  color: var(--text);-->
+<!--}-->
+
+<!--/* ===== NAVBAR ===== */-->
+<!--.navbar {-->
+<!--  height: 78px;-->
+<!--  background: linear-gradient(90deg, var(--primary), var(--primary-dark));-->
+<!--  display: flex;-->
+<!--  align-items: center;-->
+<!--  justify-content: space-between;-->
+<!--  padding: 0 50px;-->
+<!--  color: white;-->
+<!--}-->
+
+<!--.brand h2 {-->
+<!--  margin: 0;-->
+<!--  font-size: 20px;-->
+<!--  letter-spacing: 1px;-->
+<!--}-->
+
+<!--.brand span {-->
+<!--  font-size: 12px;-->
+<!--  opacity: 0.85;-->
+<!--}-->
+
+<!--.nav-links {-->
+<!--  display: flex;-->
+<!--  gap: 28px;-->
+<!--  align-items: center;-->
+<!--}-->
+
+<!--.nav-links a {-->
+<!--  color: white;-->
+<!--  text-decoration: none;-->
+<!--  font-size: 14px;-->
+<!--  font-weight: 500;-->
+<!--  opacity: 0.9;-->
+<!--}-->
+
+<!--.nav-links a:hover {-->
+<!--  opacity: 1;-->
+<!--  text-decoration: underline;-->
+<!--}-->
+
+<!--/* Theme Toggle */-->
+<!--.theme-switch {-->
+<!--  width: 46px;-->
+<!--  height: 24px;-->
+<!--  background: #bfdbfe;-->
+<!--  border-radius: 20px;-->
+<!--  position: relative;-->
+<!--  cursor: pointer;-->
+<!--}-->
+
+<!--.theme-switch::before {-->
+<!--  content: "";-->
+<!--  position: absolute;-->
+<!--  width: 18px;-->
+<!--  height: 18px;-->
+<!--  background: white;-->
+<!--  border-radius: 50%;-->
+<!--  top: 3px;-->
+<!--  left: 3px;-->
+<!--  transition: 0.3s;-->
+<!--}-->
+
+<!--body.dark .theme-switch { background: #60a5fa; }-->
+<!--body.dark .theme-switch::before { transform: translateX(22px); }-->
+
+<!--/* ===== HERO ===== */-->
+<!--.hero {-->
+<!--  text-align: center;-->
+<!--  padding: 90px 20px 40px;-->
+<!--}-->
+
+<!--.hero h1 {-->
+<!--  font-size: 42px;-->
+<!--  margin-bottom: 16px;-->
+<!--}-->
+
+<!--.hero p {-->
+<!--  color: var(--muted);-->
+<!--  font-size: 16px;-->
+<!--  max-width: 650px;-->
+<!--  margin: auto;-->
+<!--}-->
+
+<!--/* ===== STATS ===== */-->
+<!--.stats {-->
+<!--  display: flex;-->
+<!--  justify-content: center;-->
+<!--  gap: 25px;-->
+<!--  margin-top: 50px;-->
+<!--  flex-wrap: wrap;-->
+<!--}-->
+
+<!--.stat-card {-->
+<!--  background: var(--card);-->
+<!--  border: 1px solid var(--border);-->
+<!--  padding: 22px 30px;-->
+<!--  border-radius: 14px;-->
+<!--  text-align: center;-->
+<!--  min-width: 160px;-->
+<!--}-->
+
+<!--.stat-card h3 {-->
+<!--  margin: 0;-->
+<!--  font-size: 26px;-->
+<!--  color: var(--primary);-->
+<!--}-->
+
+<!--.stat-card p {-->
+<!--  margin: 6px 0 0;-->
+<!--  font-size: 13px;-->
+<!--  color: var(--muted);-->
+<!--}-->
+
+<!--/* ===== FEATURES ===== */-->
+<!--.features {-->
+<!--  display: flex;-->
+<!--  justify-content: center;-->
+<!--  gap: 30px;-->
+<!--  padding: 70px 40px 100px;-->
+<!--  flex-wrap: wrap;-->
+<!--}-->
+
+<!--.card {-->
+<!--  background: var(--card);-->
+<!--  border-radius: 16px;-->
+<!--  padding: 30px;-->
+<!--  width: 280px;-->
+<!--  border: 1px solid var(--border);-->
+<!--  box-shadow: 0 10px 25px rgba(0,0,0,0.05);-->
+<!--  text-align: center;-->
+<!--  transition: 0.3s;-->
+<!--}-->
+
+<!--.card:hover {-->
+<!--  transform: translateY(-6px);-->
+<!--  box-shadow: 0 14px 35px rgba(0,0,0,0.1);-->
+<!--}-->
+
+<!--.card h3 {-->
+<!--  margin-bottom: 12px;-->
+<!--  color: var(--primary);-->
+<!--}-->
+
+<!--.card p {-->
+<!--  color: var(--muted);-->
+<!--  font-size: 14px;-->
+<!--}-->
+<!--</style>-->
+
+<!--<script>-->
+<!--function toggleTheme() {-->
+<!--  document.body.classList.toggle("dark");-->
+<!--  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");-->
+<!--}-->
+
+<!--window.onload = function () {-->
+<!--  if (localStorage.getItem("theme") === "dark") {-->
+<!--    document.body.classList.add("dark");-->
+<!--  }-->
+<!--};-->
+<!--</script>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!-- ===== NAVIGATION ===== -->
+<!--<div class="navbar">-->
+<!--  <div class="brand">-->
+<!--    <h2>SHEMS</h2>-->
+<!--    <span>Smart Energy Control</span>-->
+<!--  </div>-->
+
+<!--  <div class="nav-links">-->
+<!--    <a href="/">Home</a>-->
+<!--    <a href="/devices">My Devices</a>-->
+<!--    <a href="/dashboard">Energy Usage</a>-->
+<!--    <div class="theme-switch" onclick="toggleTheme()" title="Toggle Theme"></div>-->
+<!--    <a th:href="@{/logout}">Logout</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- ===== HERO SECTION ===== -->
+<!--<section class="hero">-->
+<!--  <h1>Welcome to Your Smart Energy Home</h1>-->
+<!--  <p>Control your appliances, monitor energy consumption, and optimize power usage — all from one intelligent dashboard.</p>-->
+
+<!--   SAFE STATS (no null error) -->
+<!--  <div class="stats">-->
+<!--    <div class="stat-card">-->
+<!--      <h3 th:text="${totalDevices} ?: 0">0</h3>-->
+<!--      <p>Total Devices</p>-->
+<!--    </div>-->
+<!--    <div class="stat-card">-->
+<!--      <h3 th:text="${activeDevices} ?: 0">0</h3>-->
+<!--      <p>Devices ON</p>-->
+<!--    </div>-->
+<!--    <div class="stat-card">-->
+<!--      <h3 th:text="${inactiveDevices} ?: 0">0</h3>-->
+<!--      <p>Devices OFF</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!-- ===== FEATURES ===== -->
+<!--<section class="features">-->
+<!--  <div class="card">-->
+<!--    <h3>Device Monitoring</h3>-->
+<!--    <p>Track the status and energy consumption of all your smart devices in real time.</p>-->
+<!--  </div>-->
+
+<!--  <div class="card">-->
+<!--    <h3>Remote Control</h3>-->
+<!--    <p>Turn devices ON or OFF anytime from anywhere using a secure control interface.</p>-->
+<!--  </div>-->
+
+<!--  <div class="card">-->
+<!--    <h3>Energy Insights</h3>-->
+<!--    <p>Analyze usage trends and reduce electricity costs with smart energy decisions.</p>-->
+<!--  </div>-->
+<!--</section>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home | SHEMS</title>
+
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e3a8a;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  height: 74px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.brand span {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  text-align: center;
+  padding: 90px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 44px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 680px;
+  margin: auto;
+}
+
+/* ===== QUICK STATS ===== */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px 36px;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 180px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.stat-card p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ===== FEATURES ===== */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 70px 40px 110px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 32px;
+  width: 300px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<div class="navbar">
+  <div class="brand">
+    <h2>SHEMS</h2>
+    <span>Smart Energy Control</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/devices">My Devices</a>
+    <a href="/dashboard">Energy Usage</a>
+    <a th:href="@{/logout}">Logout</a>
+  </div>
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <h1>Welcome to Your Smart Energy Home</h1>
+  <p>Control appliances, track electricity usage, and make smarter energy decisions with your personal SHEMS dashboard.</p>
+
+  <!-- SAFE STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <h3 th:text="${totalDevices} ?: 0">0</h3>
+      <p>Total Connected Devices</p>
+    </div>
+    <div class="stat-card">
+      <h3 th:text="${activeDevices} ?: 0">0</h3>
+      <p>Devices Currently ON</p>
+    </div>
+    <div class="stat-card">
+      <h3 th:text="${inactiveDevices} ?: 0">0</h3>
+      <p>Devices Currently OFF</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features">
+  <div class="card">
+    <h3>Real-Time Device Monitoring</h3>
+    <p>See which appliances are active and track their energy consumption instantly.</p>
+  </div>
+
+  <div class="card">
+    <h3>Remote Device Control</h3>
+    <p>Turn devices ON or OFF from anywhere with a secure and reliable interface.</p>
+  </div>
+
+  <div class="card">
+    <h3>Smart Energy Insights</h3>
+    <p>Understand power usage trends and optimize electricity consumption efficiently.</p>
+  </div>
+</section>
+
+</body>
+</html>
+
