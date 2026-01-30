@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Admin Analytics | SHEMS</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #7c3aed;
+  --border: #e5e7eb;
+}
+
+body.dark {
+  --bg: #0b1220;
+  --card: #111827;
+  --text: #f8fafc;
+  --muted: #9ca3af;
+  --border: #1f2937;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #020617;
+  position: fixed;
+  padding: 28px 0;
+  color: white;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 14px 32px;
+  color: #cbd5f5;
+  text-decoration: none;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-left: 3px solid var(--primary);
+}
+
+/* Main */
+.main { margin-left: 240px; }
+
+/* Topbar */
+.topbar {
+  height: 88px;
+  background: linear-gradient(90deg, #7c3aed, #5b21b6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 42px;
+  color: white;
+}
+
+.topbar h1 { margin: 0; font-size: 22px; }
+
+/* Theme Switch */
+.theme-switch {
+  width: 46px;
+  height: 24px;
+  background: #c4b5fd;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-switch::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: 0.3s;
+}
+
+body.dark .theme-switch { background: #8b5cf6; }
+body.dark .theme-switch::before { transform: translateX(22px); }
+
+/* Content */
+.content { padding: 40px 48px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+canvas {
+  margin-top: 20px;
+}
+</style>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+}
+window.onload = function () {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+};
+</script>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>SHEMS Admin</h2>
+  <a href="/adminScreen">Admin Dashboard</a>
+  <a href="/devices/admin">Manage Devices</a>
+  <a href="/admin/analytics">📊 System Analytics</a>
+  <a th:href="@{/logout}">Logout</a>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <h1>System Energy Analytics</h1>
+    <div class="theme-switch" onclick="toggleTheme()"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- 📈 SYSTEM MONTHLY ENERGY -->
+    <div class="card">
+      <h2>System Energy Usage – Last 6 Months</h2>
+      <canvas id="systemMonthlyChart"></canvas>
+    </div>
+
+    <!-- 🏆 TOP ENERGY USERS -->
+    <div class="card">
+      <h2>Top Energy Consuming Users</h2>
+      <canvas id="topUsersChart"></canvas>
+    </div>
+
+  </div>
+</div>
+
+<script th:inline="javascript">
+    const monthlyLabels = [[${monthlyEnergy.keySet()}]];
+    const monthlyData = [[${monthlyEnergy.values()}]];
+
+    new Chart(document.getElementById('systemMonthlyChart'), {
+        type: 'line',
+        data: {
+            labels: monthlyLabels,
+            datasets: [{
+                label: 'System Energy (kWh)',
+                data: monthlyData,
+                borderWidth: 2,
+                fill: false
+            }]
+        }
+    });
+
+    const userLabels = [[${topUsersEnergy.keySet()}]];
+    const userData = [[${topUsersEnergy.values()}]];
+
+    new Chart(document.getElementById('topUsersChart'), {
+        type: 'bar',
+        data: {
+            labels: userLabels,
+            datasets: [{
+                label: 'Energy Usage (kWh)',
+                data: userData,
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
